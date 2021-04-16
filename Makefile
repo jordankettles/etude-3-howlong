@@ -1,3 +1,3 @@
 main: HowLong.java PieceOfString.java
-	javac.exe -cp ./ -g -Xlint *.java
-	java.exe HowLong
+	javac -cp ./ -g -Xlint *.java
+	java HowLong < i00.txt

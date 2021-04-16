@@ -10,7 +10,6 @@ public class PieceOfString{
       this.value = Integer.parseInt(form);
       this.form = "";
     }
-
     catch(Exception e) {
       value = -1;
       this.form = form;
@@ -28,6 +27,10 @@ public class PieceOfString{
 
   public char getName() {
     return name;
+  }
+
+  public void setValue(int value) {
+    this.value = value;
   }
 
   public String toString() {
