@@ -17,14 +17,16 @@ public class HowLong{
     return index;
   }
 
-  public static int findLength(PieceOfString p, char parent) {
+  public static int findLength(PieceOfString p, String parents) {
     if(p.getValue() > -1) {
       return p.getValue();
     }
     else {
       String s = p.getForm();
-      if(s.contains(Character.toString(parent))) {
-        return -1;
+      for(int i = 0; i < parents.length(); i++) {
+        if(s.contains(Character.toString(parents.charAt(i)))) {
+          return -1;
+        }
       }
       int result = 0;
       while(s.length() > 0) {
@@ -32,7 +34,7 @@ public class HowLong{
         if(next_p == -1) {
           return -1;
         }
-        int rr = findLength(strings.get(next_p), p.getName());
+        int rr = findLength(strings.get(next_p), parents + p.getName());
         if(rr  > -1) {
           try {
             result = StrictMath.addExact(result, rr);
@@ -53,7 +55,7 @@ public class HowLong{
 
   public static void findLengths() {
     for(PieceOfString p : strings) {
-      int val = findLength(p, p.getName());
+      int val = findLength(p, Character.toString(p.getName()));
       System.out.print(p.getName() + " ");
       if(val == -1) {
         System.out.println("NaN");
